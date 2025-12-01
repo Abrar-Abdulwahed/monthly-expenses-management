@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "date": "2025-10-01",
+    "type": "income",
+    "amount": 3000.0,
+    "category": "salary",
+    "description": "oct salary"
+  },
+  {
+    "date": "2025-10-03",
+    "type": "income",
+    "amount": 500.0,
+    "category": "bonus",
+    "description": "new feature implementation"
+  },
+  {
+    "date": "2025-10-20",
+    "type": "expense",
+    "amount": 100.0,
+    "category": "Shopping",
+    "description": "Shein Shopping"
+  },
+  {
+    "date": "2025-10-06",
+    "type": "expense",
+    "amount": 50.0,
+    "category": "Food",
+    "description": "food"
+  },
+  {
+    "date": "2025-10-20",
+    "type": "income",
+    "amount": 400.0,
+    "category": "competition prize",
+    "description": "oct competition prize"
+  }
+]

@@ -131,7 +131,7 @@ class BudgetApp(tk.Tk):
         frame.columnconfigure(0, weight=1)
         frame.columnconfigure(1, weight=1)
 
-    def _parse_date_or_today(self, value: str) -> date:
+    def _parse_date_or_today(self, value: str):
         value = value.strip()
         if not value:
             return date.today()

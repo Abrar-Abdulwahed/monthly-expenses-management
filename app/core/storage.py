@@ -32,7 +32,7 @@ class MongoStorage(Storage):
         self.client = MongoClient(uri)
         self.collection = self.client[db_name][collection_name]
 
-    def save(self, transaction: Transaction) -> None:
+    def save(self, transaction: Transaction):
         self.collection.insert_one(
             {
                 "date": transaction.date.isoformat(),
@@ -53,11 +53,11 @@ class MongoStorage(Storage):
             category = doc.get("category", "")
             description = doc.get("description", "")
 
-            tx_cls = TRANSACTION_CLASSES.get(t_type)
-            if not tx_cls:
+            tnx_cls = TRANSACTION_CLASSES.get(t_type)
+            if not tnx_cls:
                 continue
 
-            tx = tx_cls(t_date, amount, category, description)
+            tx = tnx_cls(t_date, amount, category, description)
             transactions.append(tx)
 
         return transactions
@@ -103,11 +103,11 @@ class JsonStorage(Storage):
             category = item.get("category", "")
             description = item.get("description", "")
 
-            tx_cls = TRANSACTION_CLASSES.get(t_type)
-            if tx_cls is None:
+            tnx_cls = TRANSACTION_CLASSES.get(t_type)
+            if tnx_cls is None:
                 continue
 
-            tx = tx_cls(t_date, amount, category, description)
+            tx = tnx_cls(t_date, amount, category, description)
             transactions.append(tx)
 
         return transactions

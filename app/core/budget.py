@@ -39,7 +39,7 @@ class BudgetManager:
 
         for tnx in transactions:
             if tnx.date.year == year and tnx.date.month == month:
-                tnx.apply_to_summary(summary)
+                tnx.apply_summary(summary)
 
         return {
             "total_income": summary["total_income"],
@@ -48,16 +48,18 @@ class BudgetManager:
             "by_category": summary["by_category"],
         }
 
-    def export_monthly_summary_to_excel(self, year: int, month: int, filename: str = "summary.xlsx") -> None:
+    def export_monthly_summary_to_excel(self, year: int, month: int, filename: str = "summary.xlsx"):
         summary = self.get_monthly_summary(year, month)
+        print(summary)
         wb = Workbook()
         ws = wb.active
         ws.title = f"{year}-{month:02d}"
-        ws.append(["Metric", "Value"])
+        ws.append(["Name", "Value"])
         ws.append(["Total income", summary["total_income"]])
         ws.append(["Total expense", summary["total_expense"]])
         ws.append(["Balance", summary["balance"]])
         ws.append([])
+        ws.append(["Expenses"])
         ws.append(["Category", "Amount"])
         for cat, value in summary["by_category"].items():
             ws.append([cat, value])

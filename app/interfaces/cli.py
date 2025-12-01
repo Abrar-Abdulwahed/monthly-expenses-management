@@ -11,7 +11,7 @@ def input_date(prompt):
 
 
 @log
-def run_cli(storage) -> None:
+def run_cli(storage):
     manager = BudgetManager(storage)
 
     while True:

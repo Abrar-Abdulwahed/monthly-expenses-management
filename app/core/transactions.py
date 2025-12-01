@@ -12,18 +12,18 @@ class Transaction:
     @property
     def type(self):
         return "transaction"
+    
 
-
-
+    
+   
 @dataclass
 class IncomeTransaction(Transaction):
     @property
     def type(self):
         return "income"
-    
-    def apply_to_summary(self, summary):
-        summary["total_income"] += self.amount
 
+    def apply_summary(self, summary):
+        summary["total_income"] += self.amount
 
 @dataclass
 class ExpenseTransaction(Transaction):
@@ -31,6 +31,6 @@ class ExpenseTransaction(Transaction):
     def type(self):
         return "expense"
     
-    def apply_to_summary(self, summary):
+    def apply_summary(self, summary):
         summary["total_expense"] += self.amount
-        summary["by_category"][self.category] = summary["by_category"].get(self.category, 0.0) + self.amount
+        summary["by_category"][self.category] = self.amount
