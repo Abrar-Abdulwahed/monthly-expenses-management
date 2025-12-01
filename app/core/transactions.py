@@ -1,23 +1,18 @@
-from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import date
 
 
 @dataclass
-class Transaction(ABC):
+class Transaction:
     date: date
     amount: float
     category: str
     description: str = ""
 
     @property
-    @abstractmethod
     def type(self):
-        pass
+        return "transaction"
 
-    @abstractmethod
-    def apply_to_summary(self, summary):
-        pass
 
 
 @dataclass

@@ -1,10 +1,7 @@
-
-
-def log_exceptions(func):
+def log(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except Exception as exc:
-            print(f"[ERROR] {func.__name__}: {exc}")
-            raise
+        except Exception as e:
+            print(f"[ERROR] {func.__name__}: {e}")
     return wrapper

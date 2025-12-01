@@ -1,7 +1,7 @@
 from app.interfaces.cli import run_cli
 from app.interfaces.gui import run_gui
 from app.core.storage import JsonStorage, MongoStorage
-from app.core.decorators import log_exceptions
+from app.core.decorators import log
 
 
 def choose_storage():
@@ -14,7 +14,7 @@ def choose_storage():
     return JsonStorage()
 
 
-@log_exceptions
+@log
 def main():
     storage = choose_storage()
     print("=== Start Application ===")
