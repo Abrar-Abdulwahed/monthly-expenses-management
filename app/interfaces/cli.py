@@ -1,5 +1,6 @@
 from datetime import datetime, date
 from app.core.budget import BudgetManager
+from app.core.decorators import log_exceptions
 
 
 def input_date(prompt):
@@ -9,6 +10,7 @@ def input_date(prompt):
     return datetime.strptime(value, "%Y-%m-%d").date()
 
 
+@log_exceptions
 def run_cli(storage) -> None:
     manager = BudgetManager(storage)
 

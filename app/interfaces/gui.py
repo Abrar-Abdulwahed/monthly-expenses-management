@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import datetime, date
 from app.core.budget import BudgetManager
+from app.core.decorators import log_exceptions
 
 
 class BudgetApp(tk.Tk):
@@ -212,6 +213,7 @@ class BudgetApp(tk.Tk):
 
 
 
+@log_exceptions
 def run_gui(storage):
     manager = BudgetManager(storage)
     app = BudgetApp(manager)
